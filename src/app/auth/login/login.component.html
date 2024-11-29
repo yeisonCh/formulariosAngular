@@ -1,0 +1,25 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <h2>Login</h2>
+
+  <!--  enfocadoa plantillas -->
+  <div class="control-row">
+    <div class="control no-margin">
+      <label for="email">Email</label>
+      <!-- usamos la directiva ngModel -->
+      <input id="email" type="email" name="email" ngModel required email/>
+    </div>
+
+    <div class="control no-margin">
+      <label for="password">Password</label>
+      <input id="password" type="password"  name="password" ngModel required minlength="6" />
+    </div>
+
+    <button class="button">Login</button>
+  </div>
+  @if (form.controls['emal'].touched && form.controls['password'].touched && form.invalid){
+    <p class="control-error">
+        !Los valores ingresados son errados, intente nuevamente¡
+    </p>
+  }
+  
+</form>
