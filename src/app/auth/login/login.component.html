@@ -1,24 +1,39 @@
-<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+<form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
   <h2>Login</h2>
 
   <!--  enfocadoa plantillas -->
   <div class="control-row">
     <div class="control no-margin">
       <label for="email">Email</label>
-      <!-- usamos la directiva ngModel -->
-      <input id="email" type="email" name="email" ngModel required email/>
+      <!-- usamos la directiva ngModel, y agregaremos un variable de plantilla #correo-->
+      <input id = "emailº" 
+            type = "email" 
+            name = "email" 
+            ngModel
+            required
+            minlength = "6"
+            #correo = "ngModel" />
     </div>
 
     <div class="control no-margin">
       <label for="password">Password</label>
-      <input id="password" type="password"  name="password" ngModel required minlength="6" />
+      <input id = "password" type = "password"  name = "password" ngModel required minlength = "6" #contrasena = "ngModel" />
     </div>
 
     <button class="button">Login</button>
   </div>
-  @if (form.controls['emal'].touched && form.controls['password'].touched && form.invalid){
+
+  <!-- (formulario.form.touched && formulario.form.invalid) (correo.touched && contrasena.dirty && formulario.form.invalid) -->
+  @if (correo.touched && correo.dirty && correo.invalid) {
     <p class="control-error">
-        !Los valores ingresados son errados, intente nuevamente¡
+        !El correo no es un correo valido ¡
+    </p>
+  }
+
+
+  @if (contrasena.touched && contrasena.dirty && contrasena.invalid) {
+    <p class="control-error">
+        !La contraseña es invalidad, debe tener almenos 6 caracteres ¡
     </p>
   }
   
