@@ -4,13 +4,12 @@ import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule
 
 //******************* FUNCIONES PARA VALIDAR ***************************
 
-function valoresIguales() {
+function valoresIguales(controCorre: string, controlConfirmarContrasenia: string) {
 
   return (control: AbstractControl) => {
-    const contrasenia = control.get('contrasena')?.value; // ? nos indica que puede ser null, pero que si no es null nos devuelva el valor
-  const confirmacionContrasenia = control.get('confirmContrasena')?.value; 
-
-  if(contrasenia === confirmacionContrasenia){
+    const val1= control.get(controCorre)?.value; // ? nos indica que puede ser null, pero que si no es null nos devuelva el valor
+    const val2 = control.get(controlConfirmarContrasenia)?.value; 
+   if(val1 === val2){
     return null;
   }
 
@@ -41,7 +40,7 @@ export class SignupComponent {
       validators:[Validators.email, Validators.required],
     }),
 
-    contrasena: new FormGroup({
+    contrasenia: new FormGroup({
         
         contrasena: new FormControl('', {
           validators:[Validators.required, Validators.minLength(6)],
@@ -51,7 +50,7 @@ export class SignupComponent {
         }),
     }, {
 
-     validators:[ valoresIguales ]
+     validators:[ valoresIguales('contrasena','confirmContrasena') ]
     }), 
 
     primerNombre: new FormControl('', { validators:[Validators.required,] }),
