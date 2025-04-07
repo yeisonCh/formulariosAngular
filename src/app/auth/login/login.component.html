@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+=======
+<form [formGroup]="miFormulario" (ngSubmit)="onSubmit()"><!-- debemos vincular el formulario con la propiedad de typescript que hemos asignado-->
+>>>>>>> c584fb5 (validación de formulario en password)
   <h2>Login</h2>
 
-  <!--  enfocadoa plantillas -->
   <div class="control-row">
     <div class="control no-margin">
       <label for="email">Email</label>
+<<<<<<< HEAD
       <!-- usamos la directiva ngModel, y agregaremos un variable de plantilla #correo-->
       <input id = "emailº" 
             type = "email" 
@@ -13,15 +17,23 @@
             required
             minlength = "6"
             #correo = "ngModel" />
+=======
+      <input id="email" type="email" [formControl]="miFormulario.controls.correo"/><!-- una forma de vincular este imput-->
+>>>>>>> c584fb5 (validación de formulario en password)
     </div>
 
     <div class="control no-margin">
       <label for="password">Password</label>
+<<<<<<< HEAD
       <input id = "password" type = "password"  name = "password" ngModel required minlength = "6" #contrasena = "ngModel" />
+=======
+      <input id="password" type="password" formControlName="contrasena" formArrayName/><!-- otra forma de vincular el imput a typescrip-->
+>>>>>>> c584fb5 (validación de formulario en password)
     </div>
 
     <button class="button">Login</button>
   </div>
+<<<<<<< HEAD
 
   <!-- (formulario.form.touched && formulario.form.invalid) (correo.touched && contrasena.dirty && formulario.form.invalid) -->
   @if (correo.touched && correo.dirty && correo.invalid) { <!-- dirty se refiere a que si el input tiene algun caracter -->
@@ -35,6 +47,14 @@
     <p class="control-error">
         !La contraseña es invalidad, debe tener almenos 6 caracteres ¡
     </p>
+=======
+  @if (correoEsValido){
+    <p class="control-error">!El correo electronico no es valido, por favor verificar ¡</p>
+>>>>>>> c584fb5 (validación de formulario en password)
   }
-  
+
+  @if(contrasenaEsValido){
+<p class="control-error">! La contraseña debe tener 6 caracteres y por lo menus un signos de ? ! </p>
+  }
+
 </form>
