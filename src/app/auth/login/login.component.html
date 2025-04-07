@@ -24,7 +24,7 @@
   </div>
 
   <!-- (formulario.form.touched && formulario.form.invalid) (correo.touched && contrasena.dirty && formulario.form.invalid) -->
-  @if (correo.touched && correo.dirty && correo.invalid) {
+  @if (correo.touched && correo.dirty && correo.invalid) { <!-- dirty se refiere a que si el input tiene algun caracter -->
     <p class="control-error">
         !El correo no es un correo valido ¡
     </p>

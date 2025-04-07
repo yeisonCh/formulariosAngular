@@ -55,7 +55,7 @@ constructor() {
   onSubmit(datosFormulario: NgForm) {
 
     if(datosFormulario.form.invalid){
-      return;
+      return; // si el formulario es invalido no se ejecuta el resto del código
     }
     console.log(datosFormulario);
     console.log(datosFormulario.touched);
@@ -68,13 +68,18 @@ constructor() {
     console.log(datosFormulario.controls['email'].dirty)
 
 
-    //datosFormulario.reset()
+    //datosFormulario.reset()  nos permite resetear el formulario o los datos intoducidos en el formulario
     datosFormulario.form.reset();
+    
+    //para resetear el formulario y dejarlo vacio usando el método setValue
+    //setValue nos permite cambiar el valor de los controles del formulario
+    //setValue({email: '', password: ''})  nos permite cambiar el valor de los controles del formulario
+   /* datosFormulario.setValue({
+      email: '',
+      password: ''
+    });*/
 
 }
     
- 
-
-
-
+  
 }
